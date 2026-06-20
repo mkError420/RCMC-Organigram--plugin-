@@ -5,7 +5,7 @@
  * Description: A premium, highly customizable, responsive Educational/Medical College Organigram matching professional structure with dynamic counts, search, and detail inspections.
  * Version:     1.2.0
  * Author:      RCMC ICT Department
- * Author URI:  https://ai.studio/build
+ * Author URI:  https://github.com/mkError420
  * License:     GPLv2 or later
  * Text Domain: RCMC-organigram-chart
  */
