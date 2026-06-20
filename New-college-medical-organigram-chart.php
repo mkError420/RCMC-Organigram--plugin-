@@ -1372,6 +1372,16 @@ class WR_College_Organigram {
 			.org-tree {
 				min-width: 1100px;
 				margin: 0 auto;
+				position: relative;
+			}
+			.org-svg-lines {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				pointer-events: none;
+				z-index: 1;
 			}
 			.org-root-row {
 				display: flex;
@@ -1646,112 +1656,15 @@ class WR_College_Organigram {
 				border-top-left-radius: 6px;
 				border-top-right-radius: 6px;
 			}
-			.org-arrow-p-to-vp {
-				position: absolute;
-				top: 22px;
-				left: 100%;
-				width: 80px;
-				height: 2px;
-				background-color: #ef4444;
-				z-index: 10;
-			}
-			.org-arrow-p-to-vp::after {
-				content: "";
-				position: absolute;
-				right: 0;
-				top: -4px;
-				width: 0;
-				height: 0;
-				border-top: 5px solid transparent;
-				border-bottom: 5px solid transparent;
-				border-left: 7px solid #ef4444;
-			}
-			.org-arrow-vp-down {
-				position: absolute;
-				bottom: -30px;
-				left: 50%;
-				width: 2px;
-				height: 30px;
-				background-color: #ef4444;
-				z-index: 10;
-			}
-			.org-arrow-vp-down::after {
-				content: "";
-				position: absolute;
-				bottom: 0;
-				left: -4px;
-				width: 0;
-				height: 0;
-				border-left: 5px solid transparent;
-				border-right: 5px solid transparent;
-				border-top: 7px solid #ef4444;
-			}
-			.org-tree-lines {
-				position: relative;
-				height: 50px;
-				margin-top: -50px;
-				margin-bottom: 0;
-				pointer-events: none;
-				z-index: 5;
-			}
 			#cat-card-administration {
 				flex: 1;
 			}
 			#cat-card-academic {
 				flex: 2.4;
 			}
-			.org-line-horizontal {
-				position: absolute;
-				top: 30px;
-				left: calc( (100% - 30px) * 0.5 / 3.4 );
-				right: calc( (100% - 30px) * 1.2 / 3.4 );
-				height: 2px;
-				background-color: #ef4444;
-				z-index: 9;
-			}
-			.org-arrow-to-admin {
-				position: absolute;
-				top: 30px;
-				left: calc( (100% - 30px) * 0.5 / 3.4 );
-				width: 2px;
-				height: 20px;
-				background-color: #ef4444;
-				z-index: 10;
-			}
-			.org-arrow-to-admin::after {
-				content: "";
-				position: absolute;
-				bottom: 0;
-				left: -4px;
-				width: 0;
-				height: 0;
-				border-left: 5px solid transparent;
-				border-right: 5px solid transparent;
-				border-top: 7px solid #ef4444;
-			}
-			.org-arrow-to-academic {
-				position: absolute;
-				top: 30px;
-				right: calc( (100% - 30px) * 1.2 / 3.4 );
-				width: 2px;
-				height: 20px;
-				background-color: #ef4444;
-				z-index: 10;
-			}
-			.org-arrow-to-academic::after {
-				content: "";
-				position: absolute;
-				bottom: 0;
-				left: -4px;
-				width: 0;
-				height: 0;
-				border-left: 5px solid transparent;
-				border-right: 5px solid transparent;
-				border-top: 7px solid #ef4444;
-			}
 			@media (max-width: 1024px) {
-				.org-tree-lines {
-					display: none !important;
+				.org-tree {
+					min-width: 100% !important;
 				}
 				.org-root-row {
 					margin-bottom: 20px !important;
@@ -1759,61 +1672,10 @@ class WR_College_Organigram {
 					align-items: center;
 					gap: 16px;
 				}
-				.org-arrow-p-to-vp {
-					top: 100%;
-					left: 50%;
-					width: 2px;
-					height: 16px;
-				}
-				.org-arrow-p-to-vp::after {
-					bottom: 0;
-					left: -4px;
-					top: auto;
-					right: auto;
-					border-top: 7px solid #ef4444;
-					border-left: 5px solid transparent;
-					border-right: 5px solid transparent;
-					border-bottom: none;
-				}
-				.org-arrow-vp-down {
-					bottom: -20px;
-					height: 20px;
-				}
 				#cat-card-administration,
 				#cat-card-academic {
 					flex: none !important;
 					width: 100% !important;
-				}
-				#cat-card-administration {
-					position: relative;
-					overflow: visible;
-				}
-				#cat-card-administration::after {
-					content: "";
-					position: absolute;
-					bottom: -30px;
-					left: 50%;
-					width: 2px;
-					height: 30px;
-					background-color: #ef4444;
-					z-index: 10;
-				}
-				#cat-card-administration::before {
-					content: "";
-					position: absolute;
-					bottom: -30px;
-					left: calc(50% - 4px);
-					width: 0;
-					height: 0;
-					border-left: 5px solid transparent;
-					border-right: 5px solid transparent;
-					border-top: 7px solid #ef4444;
-					z-index: 10;
-				}
-				/* Hide vertical connector from Admin to Academic when filtered */
-				.filter-admin #cat-card-administration::after,
-				.filter-admin #cat-card-administration::before {
-					display: none !important;
 				}
 			}
 
@@ -1966,7 +1828,6 @@ class WR_College_Organigram {
 					$vp = $data['rootNodes']['vicePrincipal'];
 					?>
 					<div class="org-root-node theme-navy" data-node="principal" id="node-principal">
-						<div class="org-arrow-p-to-vp"></div>
 						<div class="org-root-header">
 							<?php echo esc_html($principal['name']); ?>
 							<div class="org-root-subtitle">(<?php echo esc_html($principal['subtitle']); ?>)</div>
@@ -1981,7 +1842,6 @@ class WR_College_Organigram {
 					</div>
 
 					<div class="org-root-node bg-theme-lightgreen" data-node="vice_principal" id="node-vp" style="border-color: #166534;">
-						<div class="org-arrow-vp-down"></div>
 						<div class="org-root-header" style="background: #166534;">
 							<?php echo esc_html($vp['name']); ?>
 							<div class="org-root-subtitle">(<?php echo esc_html($vp['subtitle']); ?>)</div>
@@ -1996,11 +1856,6 @@ class WR_College_Organigram {
 					</div>
 				</div>
 
-				<div class="org-tree-lines">
-					<div class="org-line-horizontal"></div>
-					<div class="org-arrow-to-admin"></div>
-					<div class="org-arrow-to-academic"></div>
-				</div>
 
 				<!-- Secondary Categories Row -->
 				<div class="org-categories-row">
@@ -2169,6 +2024,10 @@ class WR_College_Organigram {
 					});
 					roots.style.display = 'none'; // Academic only focus
 				}
+
+				requestAnimationFrame(() => {
+					drawOrgLines();
+				});
 			}
 
 			function openOrgModal(card, headerBgClass) {
@@ -2215,6 +2074,173 @@ class WR_College_Organigram {
 					}, 250);
 				}
 			}
+
+			function drawOrgLines() {
+				const container = document.getElementById('org-board-college-medical-organigram-chart');
+				if (!container) return;
+
+				const tree = container.querySelector('.org-tree');
+				if (!tree) return;
+
+				let svg = container.querySelector('.org-svg-lines');
+				if (!svg) {
+					svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+					svg.setAttribute('class', 'org-svg-lines');
+					svg.style.position = 'absolute';
+					svg.style.top = '0';
+					svg.style.left = '0';
+					svg.style.width = '100%';
+					svg.style.pointerEvents = 'none';
+					svg.style.zIndex = '1';
+
+					const defs = document.createElementNS('http://www.w3.org/2000/svg', 'defs');
+					const marker = document.createElementNS('http://www.w3.org/2000/svg', 'marker');
+					marker.setAttribute('id', 'org-arrowhead');
+					marker.setAttribute('markerWidth', '8');
+					marker.setAttribute('markerHeight', '8');
+					marker.setAttribute('refX', '7');
+					marker.setAttribute('refY', '4');
+					marker.setAttribute('orient', 'auto');
+
+					const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+					path.setAttribute('d', 'M0,1 L8,4 L0,7 Z');
+					path.setAttribute('fill', '#ef4444');
+
+					marker.appendChild(path);
+					defs.appendChild(marker);
+					svg.appendChild(defs);
+					tree.appendChild(svg);
+				} else {
+					const paths = svg.querySelectorAll('path');
+					paths.forEach(p => p.remove());
+				}
+
+				svg.style.height = tree.scrollHeight + 'px';
+				svg.style.width = tree.scrollWidth + 'px';
+
+				const roots = document.getElementById('org-roots-section');
+				if (roots && roots.style.display === 'none') {
+					return;
+				}
+
+				const principal = document.getElementById('node-principal');
+				const vp = document.getElementById('node-vp');
+				const admin = document.getElementById('cat-card-administration');
+				const academic = document.getElementById('cat-card-academic');
+
+				if (!principal || !vp || !admin || !academic) return;
+
+				const rectTree = tree.getBoundingClientRect();
+				const getCoords = (el) => {
+					const r = el.getBoundingClientRect();
+					return {
+						left: r.left - rectTree.left,
+						right: r.right - rectTree.left,
+						top: r.top - rectTree.top,
+						bottom: r.bottom - rectTree.top,
+						width: r.width,
+						height: r.height,
+						centerX: r.left - rectTree.left + r.width / 2,
+						centerY: r.top - rectTree.top + r.height / 2
+					};
+				};
+
+				const pCoords = getCoords(principal);
+				const vpCoords = getCoords(vp);
+				const adminCoords = getCoords(admin);
+				const academicCoords = getCoords(academic);
+
+				const adminVisible = admin.style.display !== 'none';
+				const academicVisible = academic.style.display !== 'none';
+				const isMobile = window.innerWidth <= 1024;
+
+				const drawSvgLine = (x1, y1, x2, y2, hasArrow) => {
+					const p = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+					p.setAttribute('d', `M ${x1} ${y1} L ${x2} ${y2}`);
+					p.setAttribute('stroke', '#ef4444');
+					p.setAttribute('stroke-width', '2');
+					p.setAttribute('fill', 'none');
+					if (hasArrow) {
+						p.setAttribute('marker-end', 'url(#org-arrowhead)');
+					}
+					svg.appendChild(p);
+				};
+
+				if (isMobile) {
+					// Mobile layout: vertical lines
+					drawSvgLine(pCoords.centerX, pCoords.bottom, vpCoords.centerX, vpCoords.top, true);
+
+					if (adminVisible && academicVisible) {
+						drawSvgLine(vpCoords.centerX, vpCoords.bottom, adminCoords.centerX, adminCoords.top, true);
+						drawSvgLine(adminCoords.centerX, adminCoords.bottom, academicCoords.centerX, academicCoords.top, true);
+					} else if (adminVisible) {
+						drawSvgLine(vpCoords.centerX, vpCoords.bottom, adminCoords.centerX, adminCoords.top, true);
+					} else if (academicVisible) {
+						drawSvgLine(vpCoords.centerX, vpCoords.bottom, academicCoords.centerX, academicCoords.top, true);
+					}
+				} else {
+					// Desktop layout
+					const pHeader = principal.querySelector('.org-root-header');
+					const vpHeader = vp.querySelector('.org-root-header');
+					const pArrowY = pCoords.top + (pHeader ? pHeader.offsetHeight / 2 : 22);
+					const vpArrowY = vpCoords.top + (vpHeader ? vpHeader.offsetHeight / 2 : 22);
+
+					// 1. Principal to VP (horizontal arrow)
+					drawSvgLine(pCoords.right, pArrowY, vpCoords.left, vpArrowY, true);
+
+					// 2. Connections to categories
+					const rootBottom = Math.max(pCoords.bottom, vpCoords.bottom);
+
+					if (adminVisible && academicVisible) {
+						const catTop = Math.min(adminCoords.top, academicCoords.top);
+						const midY = rootBottom + (catTop - rootBottom) / 2;
+
+						// Vertical line down from VP center bottom to midY
+						drawSvgLine(vpCoords.centerX, vpCoords.bottom, vpCoords.centerX, midY, false);
+
+						// Horizontal line from Admin center to Academic center at midY
+						drawSvgLine(adminCoords.centerX, midY, academicCoords.centerX, midY, false);
+
+						// Vertical arrow down to Admin
+						drawSvgLine(adminCoords.centerX, midY, adminCoords.centerX, adminCoords.top, true);
+
+						// Vertical arrow down to Academic
+						drawSvgLine(academicCoords.centerX, midY, academicCoords.centerX, academicCoords.top, true);
+					} else if (adminVisible) {
+						const catTop = adminCoords.top;
+						const midY = rootBottom + (catTop - rootBottom) / 2;
+
+						drawSvgLine(vpCoords.centerX, vpCoords.bottom, vpCoords.centerX, midY, false);
+						drawSvgLine(vpCoords.centerX, midY, adminCoords.centerX, midY, false);
+						drawSvgLine(adminCoords.centerX, midY, adminCoords.centerX, adminCoords.top, true);
+					} else if (academicVisible) {
+						const catTop = academicCoords.top;
+						const midY = rootBottom + (catTop - rootBottom) / 2;
+
+						drawSvgLine(vpCoords.centerX, vpCoords.bottom, vpCoords.centerX, midY, false);
+						drawSvgLine(vpCoords.centerX, midY, academicCoords.centerX, midY, false);
+						drawSvgLine(academicCoords.centerX, midY, academicCoords.centerX, academicCoords.top, true);
+					}
+				}
+			}
+
+			// Initialize and bind resizing events
+			window.addEventListener('resize', () => {
+				requestAnimationFrame(drawOrgLines);
+			});
+			window.addEventListener('load', () => {
+				requestAnimationFrame(drawOrgLines);
+			});
+			document.addEventListener('DOMContentLoaded', () => {
+				requestAnimationFrame(drawOrgLines);
+				setTimeout(drawOrgLines, 100);
+				setTimeout(drawOrgLines, 500);
+				setTimeout(drawOrgLines, 1000);
+			});
+			// Run immediately
+			requestAnimationFrame(drawOrgLines);
+			setTimeout(drawOrgLines, 100);
+			setTimeout(drawOrgLines, 500);
 		</script>
 		<?php
 		return ob_get_clean();
