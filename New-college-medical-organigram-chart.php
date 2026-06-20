@@ -2162,16 +2162,17 @@ class WR_College_Organigram {
 				};
 
 				if (isMobile) {
-					// Mobile layout: vertical lines
-					drawSvgLine(pCoords.centerX, pCoords.bottom, vpCoords.centerX, vpCoords.top, true);
+					// Mobile layout: vertical lines down the exact center of the container
+					const centerX = rectTree.width / 2;
+					drawSvgLine(centerX, pCoords.bottom, centerX, vpCoords.top, true);
 
 					if (adminVisible && academicVisible) {
-						drawSvgLine(vpCoords.centerX, vpCoords.bottom, adminCoords.centerX, adminCoords.top, true);
-						drawSvgLine(adminCoords.centerX, adminCoords.bottom, academicCoords.centerX, academicCoords.top, true);
+						drawSvgLine(centerX, vpCoords.bottom, centerX, adminCoords.top, true);
+						drawSvgLine(centerX, adminCoords.bottom, centerX, academicCoords.top, true);
 					} else if (adminVisible) {
-						drawSvgLine(vpCoords.centerX, vpCoords.bottom, adminCoords.centerX, adminCoords.top, true);
+						drawSvgLine(centerX, vpCoords.bottom, centerX, adminCoords.top, true);
 					} else if (academicVisible) {
-						drawSvgLine(vpCoords.centerX, vpCoords.bottom, academicCoords.centerX, academicCoords.top, true);
+						drawSvgLine(centerX, vpCoords.bottom, centerX, academicCoords.top, true);
 					}
 				} else {
 					// Desktop layout
