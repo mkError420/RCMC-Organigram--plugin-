@@ -2104,7 +2104,7 @@ class WR_College_Organigram {
 
 					const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
 					path.setAttribute('d', 'M0,1 L8,4 L0,7 Z');
-					path.setAttribute('fill', '#ef4444');
+					path.setAttribute('fill', '#9ca3af');
 
 					marker.appendChild(path);
 					defs.appendChild(marker);
@@ -2157,8 +2157,8 @@ class WR_College_Organigram {
 				const drawSvgLine = (x1, y1, x2, y2, hasArrow) => {
 					const p = document.createElementNS('http://www.w3.org/2000/svg', 'path');
 					p.setAttribute('d', `M ${x1} ${y1} L ${x2} ${y2}`);
-					p.setAttribute('stroke', '#ef4444');
-					p.setAttribute('stroke-width', '2');
+					p.setAttribute('stroke', '#9ca3af');
+					p.setAttribute('stroke-width', '3');
 					p.setAttribute('fill', 'none');
 					if (hasArrow) {
 						p.setAttribute('marker-end', 'url(#org-arrowhead)');
