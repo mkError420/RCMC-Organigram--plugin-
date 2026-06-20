@@ -2198,8 +2198,10 @@ class WR_College_Organigram {
 						// Vertical line down from VP center bottom to midY
 						drawSvgLine(vpCoords.centerX, vpCoords.bottom, vpCoords.centerX, midY, false);
 
-						// Horizontal line from Admin center to Academic center at midY
-						drawSvgLine(adminCoords.centerX, midY, academicCoords.centerX, midY, false);
+						// Horizontal line spanning all three X coordinates at midY
+						const minX = Math.min(adminCoords.centerX, academicCoords.centerX, vpCoords.centerX);
+						const maxX = Math.max(adminCoords.centerX, academicCoords.centerX, vpCoords.centerX);
+						drawSvgLine(minX, midY, maxX, midY, false);
 
 						// Vertical arrow down to Admin
 						drawSvgLine(adminCoords.centerX, midY, adminCoords.centerX, adminCoords.top, true);
