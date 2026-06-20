@@ -1370,7 +1370,8 @@ class WR_College_Organigram {
 			
 			/* Trees and lines */
 			.org-tree {
-				min-width: 1100px;
+				width: 100%;
+				max-width: 1200px;
 				margin: 0 auto;
 				position: relative;
 			}
@@ -1609,25 +1610,7 @@ class WR_College_Organigram {
 			.dept-bg-yellow { background: #d97706; }
 			
 			/* Mobile adjustments */
-			@media (max-width: 1024px) {
-				.org-categories-row {
-					flex-direction: column;
-				}
-				.org-subcategories-row {
-					flex-direction: column;
-				}
-				.org-dept-preclinical, .org-dept-clinical {
-					grid-template-columns: repeat(2, 1fr);
-				}
-				.org-tree {
-					min-width: 100%;
-				}
-				.org-root-row {
-					flex-direction: column;
-					align-items: center;
-					gap: 16px;
-				}
-			}
+
 			@media (max-width: 640px) {
 				.org-dept-admin, .org-dept-preclinical, .org-dept-clinical {
 					grid-template-columns: 1fr;
@@ -1662,6 +1645,7 @@ class WR_College_Organigram {
 			#cat-card-academic {
 				flex: 2.4;
 			}
+			/* Mobile and Tablet adjustments */
 			@media (max-width: 1024px) {
 				.org-tree {
 					min-width: 100% !important;
@@ -1671,6 +1655,17 @@ class WR_College_Organigram {
 					flex-direction: column;
 					align-items: center;
 					gap: 16px;
+				}
+				.org-categories-row {
+					flex-direction: column;
+					gap: 20px;
+				}
+				.org-subcategories-row {
+					flex-direction: column;
+					gap: 16px;
+				}
+				.org-dept-preclinical, .org-dept-clinical {
+					grid-template-columns: repeat(2, 1fr);
 				}
 				#cat-card-administration,
 				#cat-card-academic {
