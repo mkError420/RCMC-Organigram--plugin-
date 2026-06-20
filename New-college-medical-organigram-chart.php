@@ -1352,14 +1352,7 @@ class WR_College_Organigram {
 				border-bottom: 1px solid #f0f0f0;
 				padding-bottom: 16px;
 			}
-			.org-search {
-				padding: 8px 12px;
-				border: 1px solid #ccc;
-				border-radius: 6px;
-				font-size: 14px;
-				min-width: 250px;
-				box-sizing: border-box;
-			}
+
 			.org-filter-btn {
 				padding: 6px 12px;
 				background: #f3f4f6;
@@ -1959,7 +1952,6 @@ class WR_College_Organigram {
 					<?php echo esc_html($data['title']); ?>
 				</div>
 				<div style="display:flex; gap:8px; align-items:center;">
-					<input type="text" class="org-search" placeholder="Type to search roles or departments..." id="org-search-input">
 					<button class="org-filter-btn active" onclick="orgFilterCategory(this, 'all')">All</button>
 					<button class="org-filter-btn" onclick="orgFilterCategory(this, 'admin')">Admin</button>
 					<button class="org-filter-btn" onclick="orgFilterCategory(this, 'academic')">Academic</button>
@@ -2145,71 +2137,8 @@ class WR_College_Organigram {
 			</div>
 		</div>
 
-		<!-- Search and Filter interactive logic -->
+		<!-- Filter interactive logic -->
 		<script>
-			document.getElementById('org-search-input').addEventListener('input', function(e) {
-				const query = e.target.value.toLowerCase().trim();
-				const cards = document.querySelectorAll('#org-board-college-medical-organigram-chart .org-dept-card');
-				const roots = document.querySelectorAll('#org-board-college-medical-organigram-chart .org-root-node');
-				const rootItems = document.querySelectorAll('#org-board-college-medical-organigram-chart .org-root-item');
-				const deptItems = document.querySelectorAll('#org-board-college-medical-organigram-chart .org-dept-item');
-
-				if (query === '') {
-					cards.forEach(c => { c.classList.remove('org-highlight', 'org-dimmed'); });
-					roots.forEach(r => { r.classList.remove('org-highlight', 'org-dimmed'); });
-					return;
-				}
-
-				let matchCount = 0;
-
-				// 1. Process root nodes and their children
-				roots.forEach(node => {
-					const nodeTitle = node.querySelector('.org-root-header').textContent.toLowerCase();
-					let hasMatch = nodeTitle.includes(query);
-					
-					// Check if any items inside matches
-					const subItems = node.querySelectorAll('.org-root-item');
-					subItems.forEach(item => {
-						const txt = item.getAttribute('data-search-text') || '';
-						if (txt.includes(query)) {
-							hasMatch = true;
-						}
-					});
-
-					if (hasMatch) {
-						node.classList.add('org-highlight');
-						node.classList.remove('org-dimmed');
-						matchCount++;
-					} else {
-						node.classList.add('org-dimmed');
-						node.classList.remove('org-highlight');
-					}
-				});
-
-				// 2. Process Departments cards
-				cards.forEach(card => {
-					const headerTxt = card.querySelector('.org-dept-header').textContent.toLowerCase();
-					let hasMatch = headerTxt.includes(query);
-
-					const items = card.querySelectorAll('.org-dept-item');
-					items.forEach(item => {
-						const txt = item.getAttribute('data-search-text') || '';
-						if (txt.includes(query)) {
-							hasMatch = true;
-						}
-					});
-
-					if (hasMatch) {
-						card.classList.add('org-highlight');
-						card.classList.remove('org-dimmed');
-						matchCount++;
-					} else {
-						card.classList.add('org-dimmed');
-						card.classList.remove('org-highlight');
-					}
-				});
-			});
-
 			function orgFilterCategory(btn, cat) {
 				const container = document.getElementById('org-board-college-medical-organigram-chart');
 				if (container) {
@@ -2223,11 +2152,6 @@ class WR_College_Organigram {
 
 				const wraps = document.querySelectorAll('#org-board-college-medical-organigram-chart .org-category-wrap');
 				const roots = document.getElementById('org-roots-section');
-
-				// Reset search
-				document.getElementById('org-search-input').value = '';
-				document.querySelectorAll('#org-board-college-medical-organigram-chart .org-dept-card').forEach(c => c.classList.remove('org-highlight', 'org-dimmed'));
-				document.querySelectorAll('#org-board-college-medical-organigram-chart .org-root-node').forEach(r => r.classList.remove('org-highlight', 'org-dimmed'));
 
 				if (cat === 'all') {
 					wraps.forEach(w => w.style.display = 'block');
