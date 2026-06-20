@@ -2111,8 +2111,7 @@ class WR_College_Organigram {
 					paths.forEach(p => p.remove());
 				}
 
-				svg.style.height = tree.scrollHeight + 'px';
-				svg.style.width = tree.scrollWidth + 'px';
+
 
 				const roots = document.getElementById('org-roots-section');
 				if (roots && roots.style.display === 'none') {
