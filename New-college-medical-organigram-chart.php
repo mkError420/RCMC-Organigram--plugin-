@@ -1348,7 +1348,8 @@ class WR_College_Organigram {
 				align-items: center;
 				flex-wrap: wrap;
 				gap: 12px;
-				margin-bottom: 24px;
+				margin: 0 auto 24px auto;
+				max-width: 1200px;
 				border-bottom: 1px solid #f0f0f0;
 				padding-bottom: 16px;
 			}
