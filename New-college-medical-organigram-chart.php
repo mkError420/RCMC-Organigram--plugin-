@@ -1,13 +1,13 @@
 <?php
 /**
  * Plugin Name: RCMC Organigram Chart
- * Plugin URI:  https://wordpress.org/plugins/college-medical-organigram-chart/
+ * Plugin URI:  https://github.com/mkError420/RCMC-Organigram--plugin-
  * Description: A premium, highly customizable, responsive Educational/Medical College Organigram matching professional structure with dynamic counts, search, and detail inspections.
  * Version:     1.2.0
  * Author:      RCMC ICT Department
- * Author URI:  https://github.com/mkError420
+ * Author URI:  rcmc.com.bd
  * License:     GPLv2 or later
- * Text Domain: RCMC-organigram-chart
+ * Text Domain: https://github.com/mkError420
  */
 
 // Prevent direct access.
